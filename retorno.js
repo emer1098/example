@@ -1,6 +1,8 @@
 // retorno.js
 // Servidor HTTP simple en Node que entrega una interfaz HTML
 // para el módulo de RETORNO DE LIBROS (RF01–RF05).
+// Módulo de retorno de libros - Sprint 1
+// Implementa RF01–RF05 con interfaz HTML servida desde Node
 
 const http = require("http");
 
@@ -11,7 +13,9 @@ const html = `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Biblioteca Escolar - Retorno (MAIN)</title>
+<<<<<<< HEAD
+  <title>Biblioteca Escolar - Retorno (VERSIÓN FINAL)</title>
+
   <style>
     :root {
       --primary: #1e88e5;
