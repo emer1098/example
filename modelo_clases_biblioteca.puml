@@ -1,0 +1,98 @@
+@startuml
+title Modelo completo - Sistema de biblioteca escolar
+
+left to right direction
+
+'=====================
+' MÓDULO SOCIOS Y PRÉSTAMOS
+'=====================
+package "Módulo de Socios y Préstamos" {
+
+  class Socio {
+    +idSocio: int
+    +dni: string
+    +nombreCompleto: string
+    +estado: EstadoSocio
+    +fechaFinSuspension: Date
+  }
+
+  class Bibliotecaria {
+    +idBibliotecaria: int
+    +nombre: string
+  }
+
+  class Prestamo {
+    +idPrestamo: int
+    +fechaPrestamo: Date
+    +fechaDevolucion: Date
+    +estado: EstadoPrestamo
+  }
+
+  enum EstadoSocio {
+    HABILITADO
+    SUSPENDIDO
+  }
+
+  enum EstadoPrestamo {
+    VIGENTE
+    DEVUELTO
+    VENCIDO
+  }
+}
+
+'=====================
+' MÓDULO LIBROS Y EJEMPLARES
+'=====================
+package "Módulo de Libros y Ejemplares" {
+
+  class Libro {
+    +idLibro: int
+    +titulo: string
+    +autor: string
+    +tema: string
+  }
+
+  class Ejemplar {
+    +idEjemplar: int
+    +codigoEtiqueta: string
+    +estado: EstadoEjemplar
+  }
+
+  enum EstadoEjemplar {
+    DISPONIBLE
+    PRESTADO
+    DETERIORADO
+  }
+}
+
+'=====================
+' ASOCIACIONES
+'=====================
+
+Socio "1" -- "0..*" Prestamo : realiza >
+Bibliotecaria "1" -- "0..*" Prestamo : registra >
+Ejemplar "1" -- "0..*" Prestamo : ejemplar >
+Libro "1" -- "1..*" Ejemplar : tiene >
+
+note right of Socio
+  - Máx. 3 préstamos VIGENTES.
+  - Si tiene préstamo VENCIDO
+    o está SUSPENDIDO,
+    no puede generar nuevos préstamos.
+end note
+
+note right of Ejemplar
+  - Un ejemplar DETERIORADO
+    no puede estar en un préstamo
+    con estado VIGENTE.
+end note
+
+note right of Prestamo
+  - Si la fechaDevolucion ya pasó
+    y el estado es VIGENTE,
+    el préstamo pasa a VENCIDO.
+  - Al devolver un préstamo VENCIDO,
+    el socio queda SUSPENDIDO 15 días.
+end note
+
+@enduml
