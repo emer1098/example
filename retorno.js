@@ -11,7 +11,7 @@ const html = `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Biblioteca Escolar - Módulo de Retorno</title>
+  <title>Biblioteca Escolar - Retorno (MAIN)</title>
   <style>
     :root {
       --primary: #1e88e5;
