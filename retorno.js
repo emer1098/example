@@ -8,12 +8,15 @@ const http = require("http");
 
 const PORT = 3000;
 
+
 // Aquí va TODO el HTML + cambio desde git
+
+
 const html = `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-<<<<<<< HEAD
+
   <title>Biblioteca Escolar - Retorno (VERSIÓN FINAL)</title>
 
   <style>
