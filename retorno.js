@@ -1,5 +1,5 @@
 
-// retorno main
+// retorno git
 
 // Servidor HTTP simple en Node que entrega una interfaz HTML
 // para el módulo de RETORNO DE LIBROS (RF01–RF05).
